@@ -1,0 +1,25 @@
+2025-09-21 17:17:19,659 - __main__ - INFO - Starting Flask on 0.0.0.0:5000 (debug=False, env=development)
+2025-09-21 17:17:19,754 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.42.19.180:5000
+2025-09-21 17:17:19,755 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-09-21 17:17:30,120 - werkzeug - INFO - 127.0.0.1 - - [21/Sep/2025 17:17:30] "[33mGET / HTTP/1.1[0m" 404 -
+2025-09-21 17:17:30,389 - werkzeug - INFO - 127.0.0.1 - - [21/Sep/2025 17:17:30] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-09-21 17:17:39,870 - werkzeug - INFO - 127.0.0.1 - - [21/Sep/2025 17:17:39] "GET /health HTTP/1.1" 200 -
+2025-09-21 17:18:08,200 - werkzeug - INFO - 127.0.0.1 - - [21/Sep/2025 17:18:08] "[33mGET /api/v1 HTTP/1.1[0m" 404 -
+2025-09-21 17:18:24,787 - werkzeug - INFO - 127.0.0.1 - - [21/Sep/2025 17:18:24] "GET /api/v1/forex/exchanges HTTP/1.1" 200 -
+2025-09-21 17:18:43,124 - __main__ - ERROR - Unhandled exception
+Traceback (most recent call last):
+  File "H:\Programming\Financial market\Project\env\Lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "H:\Programming\Financial market\Project\env\Lib\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "H:\Programming\Financial market\Project\TradeBot\main.py", line 228, in api_forex_symbol
+    _require_params(request.args, "exchange")
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "H:\Programming\Financial market\Project\TradeBot\main.py", line 87, in _require_params
+    raise ApiError(f"missing required params: {', '.join(missing)}", 400)
+ApiError: missing required params: exchange
+2025-09-21 17:18:43,127 - werkzeug - INFO - 127.0.0.1 - - [21/Sep/2025 17:18:43] "[35m[1mGET /api/v1/forex/symbols HTTP/1.1[0m" 500 -
