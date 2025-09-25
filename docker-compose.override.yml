@@ -1,0 +1,38 @@
+# Development override file
+# Use with: docker-compose -f docker-compose.yml -f docker-compose.override.yml up
+
+services:
+  trading-api:
+    build:
+      context: .
+      dockerfile: dockerfile
+    command: ["trading-api"]
+    environment:
+      - FLASK_DEBUG=true
+      - ENVIRONMENT=development
+    volumes:
+      - .:/app  # Live code reloading for development
+    ports:
+      - "5000:5000"
+      - "8000:8000"
+
+
+  # Optional: Add pgAdmin for database management in development
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: trading-pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@trading.local
+      PGADMIN_DEFAULT_PASSWORD: admin123
+    ports:
+      - "5050:80"
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+    networks:
+      - tradebot-network
+    depends_on:
+      - postgres
+
+volumes:
+  pgadmin_data:
+    driver: local
