@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+#encode: utf-8
 """
 MT5 Trading System Startup Script
 
@@ -334,3 +335,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
